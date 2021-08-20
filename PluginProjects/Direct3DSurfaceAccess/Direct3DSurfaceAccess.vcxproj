@@ -168,7 +168,8 @@
       <ModuleDefinitionFile>Library.def</ModuleDefinitionFile>
     </Link>
     <PostBuildEvent>
-      <Command>Robocopy "$(TargetDir)\" "\$(SolutionDir)..\..\Assets\Plugins\WSA\ARM"</Command>
+      <Command>Robocopy "$(TargetDir)\" "$(SolutionDir)..\..\Assets\Plugins\WSA\ARM" $(TargetFileName)
+if %ERRORLEVEL% lss 8 exit 0</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -203,7 +204,8 @@ if %ERRORLEVEL% lss 8 exit 0</Command>
       <ModuleDefinitionFile>Library.def</ModuleDefinitionFile>
     </Link>
     <PostBuildEvent>
-      <Command>Robocopy "$(TargetDir)\" "\$(SolutionDir)..\..\Assets\Plugins\WSA\ARM"</Command>
+      <Command>Robocopy "$(TargetDir)\" "$(SolutionDir)..\..\Assets\Plugins\WSA\ARM" $(TargetFileName)
+if %ERRORLEVEL% lss 8 exit 0</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|arm'">
@@ -238,7 +240,8 @@ if %ERRORLEVEL% lss 8 exit 0</Command>
       <ModuleDefinitionFile>Library.def</ModuleDefinitionFile>
     </Link>
     <PostBuildEvent>
-      <Command>Robocopy "$(TargetDir)\" "\$(SolutionDir)..\..\Assets\Plugins\WSA\ARM"</Command>
+      <Command>Robocopy "$(TargetDir)\" "$(SolutionDir)..\..\Assets\Plugins\WSA\ARM" $(TargetFileName)
+if %ERRORLEVEL% lss 8 exit 0</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
@@ -273,7 +276,8 @@ if %ERRORLEVEL% lss 8 exit 0</Command>
       <ModuleDefinitionFile>Library.def</ModuleDefinitionFile>
     </Link>
     <PostBuildEvent>
-      <Command>Robocopy "$(TargetDir)\" "\$(SolutionDir)..\..\Assets\Plugins\WSA\ARM"</Command>
+      <Command>Robocopy "$(TargetDir)\" "$(SolutionDir)..\..\Assets\Plugins\WSA\ARM" $(TargetFileName)
+if %ERRORLEVEL% lss 8 exit 0</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
