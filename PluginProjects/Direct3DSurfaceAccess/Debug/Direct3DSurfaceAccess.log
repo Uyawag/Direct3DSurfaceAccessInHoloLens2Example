@@ -1,0 +1,5 @@
+﻿  pch.cpp
+  dllmain.cpp
+  Direct3DSurfaceAccess.cpp
+     ライブラリ C:\Users\Master\Sources\Direct3DSurfaceAccessInHoloLens2Example\PluginProjects\Direct3DSurfaceAccess\Debug\Direct3DSurfaceAccess\Direct3DSurfaceAccess.lib とオブジェクト C:\Users\Master\Sources\Direct3DSurfaceAccessInHoloLens2Example\PluginProjects\Direct3DSurfaceAccess\Debug\Direct3DSurfaceAccess\Direct3DSurfaceAccess.exp を作成中
+  Direct3DSurfaceAccess.vcxproj -> C:\Users\Master\Sources\Direct3DSurfaceAccessInHoloLens2Example\PluginProjects\Direct3DSurfaceAccess\Debug\Direct3DSurfaceAccess\Direct3DSurfaceAccess.dll

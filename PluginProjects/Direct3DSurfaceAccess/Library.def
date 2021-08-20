@@ -1,0 +1,3 @@
+LIBRARY Direct3DSurfaceAccess
+EXPORTS
+	Direct3DSurfaceAccess @1
