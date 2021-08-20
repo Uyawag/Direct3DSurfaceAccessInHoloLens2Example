@@ -16,26 +16,40 @@ Use Unity 2019.4.28f1 and Visual Studio 2019.
 
 ### Build Unity Project and deploy to HoloLens 2
 
-1. Unity, File > Build Settings... > [Build]
+1. Unity, open project folder.
 
-2. Select output folder (e.g. `Build`).
+2. If MRTK window opened, select "Always skip setup".
 
-3. Exports a Visual Studio UWP Project.
+3. If scene in Hierarchy view is "Untitled", open Assets/MyProject/Scenes/SampleScene.
 
-4. Visual Studio, open the output .sln and build Debug|ARM.
+4. File > Build Settings...
 
-5. Deploy app to HoloLens 2 and run (Debug > Run Without Debugging).
+5. Switch platform to "Universal Windows Platform" with below settings.
+
+   - Target Device: HoloLens
+   - Architecture: ARM
+   - Development Build: Checked
+   - Script Debugging: Checked
+   - Wait For Managed Debugger: Checked
+
+6. Build and select output folder (e.g. `Build`).
+
+   - Exports a Visual Studio UWP Project.
+
+7. Visual Studio, open the output .sln and build Debug|ARM.
+
+8. Deploy app to HoloLens 2 and run (Debug > Run Without Debugging).
 
    - HoloLens 2 waits attach for debugging.
 
-6. Unity, Assets > Open C# Project (Open Visual Studio).
+9. Unity, Assets > Open C# Project (Open Visual Studio).
 
-7. Visual Studio, open Assets/MyProject/Scripts/Direct3DSurfaceAccessHoloLens2.cs, and set brake point to line 76 (Call Direct3DSurfaceAccess function).
+10. Visual Studio, open Assets/MyProject/Scripts/Direct3DSurfaceAccessHoloLens2.cs, and set brake point to line 76 (Call Direct3DSurfaceAccess function).
 
-8. Attach to HoloLens 2 process.
+11. Attach to HoloLens 2 process.
 
-9. Start HoloLens 2 that waiting.
+12. Start HoloLens 2 that waiting.
 
-   - Stop on break point.
+    - Stop on break point.
 
-10. Continue, crash in Direct3DSurfaceAccess.dll...
+13. Continue, crash in Direct3DSurfaceAccess.dll...
