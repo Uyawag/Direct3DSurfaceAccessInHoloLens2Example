@@ -2,30 +2,29 @@
 #include "Direct3DSurfaceAccess.h"
 
 void __stdcall Direct3DSurfaceAccess(
-	const winrt::Windows::Graphics::DirectX::Direct3D11::IDirect3DSurface* d3dSurface,
+	::IUnknown* d3dSurfacePtr,
 	char* message,
 	size_t messageLength
 ) {
-	// Here, confirmed that d3dSurface is not null.
-
 	try {
-		// Issue is here.
+		HRESULT hr;
+
+		winrt::Windows::Graphics::DirectX::Direct3D11::IDirect3DSurface d3dSurface{ nullptr };
+		hr = d3dSurfacePtr->QueryInterface(winrt::guid_of<decltype(d3dSurface)>(), winrt::put_abi(d3dSurface));
+		if (FAILED(hr)) {
+			::sprintf_s(message, messageLength, "d3dSurfacePtr->QueryInterface failed. hr: %08x", hr);
+			return;
+		}
 
 		winrt::com_ptr<::Windows::Graphics::DirectX::Direct3D11::IDirect3DDxgiInterfaceAccess> dxgiInterfaceAccess;
-		if (!d3dSurface->try_as(dxgiInterfaceAccess)) {
-			// App crashes on d3dSurface->try_as.
+		if (!d3dSurface.try_as(dxgiInterfaceAccess)) {
 			::sprintf_s(message, messageLength, "d3dSurface->try_as failed.");
 			return;
 		}
 
 		// Call other d3dSurface method as a test.
-		winrt::Windows::Graphics::DirectX::Direct3D11::Direct3DSurfaceDescription desc = d3dSurface->Description();
-			// Same above. App crashes on d3dSurface->Description.
-
-		// Unreachable to here...
-		// When succeeded to get the IDirect3DDxgiInterfaceAccess, read pixel data by below code.
-
-		HRESULT hr;
+		//winrt::Windows::Graphics::DirectX::Direct3D11::Direct3DSurfaceDescription desc = d3dSurface.Description();
+			// -> No problem.
 
 		winrt::com_ptr<::IDXGISurface> nativeSurface;
 		hr = dxgiInterfaceAccess->GetInterface(IID_PPV_ARGS(nativeSurface.put()));
@@ -35,8 +34,10 @@ void __stdcall Direct3DSurfaceAccess(
 		}
 
 		::DXGI_MAPPED_RECT rect;
-		hr = nativeSurface->Map(&rect, DXGI_MAP_READ);
+		hr = nativeSurface->Map(&rect, DXGI_MAP_READ | DXGI_MAP_DISCARD);
 		if (FAILED(hr)) {
+			// Returns E_INVALIDARG when 2nd arg is "DXGI_MAP_READ" or "DXGI_MAP_READ | DXGI_MAP_DISCARD".
+			// Should research.
 			::sprintf_s(message, messageLength, "nativeSurface->Map failed. hr: %08x", hr);
 			return;
 		}
@@ -51,9 +52,6 @@ void __stdcall Direct3DSurfaceAccess(
 	} catch (...) {
 		::sprintf_s(message, messageLength, "Caught any exception.");
 		return;
-
-		// Can't catch any exceptions.
-		// App freezes and downs on HoloLens 2.
 	}
 
 	::sprintf_s(message, messageLength, "Succeeded!");

@@ -4,6 +4,11 @@ Example project for below question.
 
 https://stackoverflow.com/questions/68841164/how-to-get-pixel-data-from-videomediaframe-direct3dsurface
 
+## History
+
+- 8/21/2021 Update code with reference to stackoverflow answer.
+- 8/20/2021 Create repository.
+
 ## Usage
 
 Use Unity 2019.4.28f1 and Visual Studio 2019.
@@ -52,4 +57,6 @@ Use Unity 2019.4.28f1 and Visual Studio 2019.
 
     - Stop on break point.
 
-13. Continue, crash in Direct3DSurfaceAccess.dll...
+13. Continue, ~~crash in Direct3DSurfaceAccess.dll...~~
+
+    - Succeeded to access IDirect3DSurface in C++ Unmanaged DLL. (8/21/2021)

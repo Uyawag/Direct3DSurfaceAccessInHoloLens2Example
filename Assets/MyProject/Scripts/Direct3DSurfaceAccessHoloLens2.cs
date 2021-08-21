@@ -61,7 +61,7 @@ public class Direct3DSurfaceAccessHoloLens2 : MonoBehaviour {
 
 	[DllImport("Direct3DSurfaceAccess")]
 	private static extern void Direct3DSurfaceAccess(
-		[MarshalAs(UnmanagedType.Interface)] Windows.Graphics.DirectX.Direct3D11.IDirect3DSurface d3dSurface,
+		[MarshalAs(UnmanagedType.IUnknown)] object d3dSurface,
 		[Out] StringBuilder errorMessage,
 		int errorMessageLength
 	);
